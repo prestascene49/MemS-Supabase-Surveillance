@@ -1,4 +1,3 @@
-
 name: Surveillance Supabase MemS
 
 on:
@@ -17,4 +16,5 @@ jobs:
       - name: Verifier que Supabase repond
         run: |
           curl --fail --silent --show-error --max-time 20 \
-            "https://wzymtyrsocjzujllkupz.supabase.co/auth/v1/health"
+            "https://wzymtyrsocjzujllkupz.supabase.co/auth/v1/health" \
+            -H "apikey: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}"
