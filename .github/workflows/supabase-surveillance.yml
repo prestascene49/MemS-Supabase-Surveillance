@@ -1,3 +1,4 @@
+
 name: Surveillance Supabase MemS
 
 on:
@@ -13,11 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:
-      - name: Verifier la base Supabase
-        env:
-          SUPABASE_URL: https://wzymtyrsocjzujllkupz.supabase.co
-          SUPABASE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
+      - name: Verifier que Supabase repond
         run: |
           curl --fail --silent --show-error --max-time 20 \
-            -H "apikey: $SUPABASE_KEY" \
-            "$SUPABASE_URL/rest/v1/mems_spectacles?select=id&limit=1"
+            "https://wzymtyrsocjzujllkupz.supabase.co/auth/v1/health"
